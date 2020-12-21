@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-$dbLink = mysqli_connect("127.0.0.1", "site1", "sbs123414", "site1" , "3307");
+if ( PHP_OS == 'WINNT' ) {
+	$dbLink = mysqli_connect("127.0.0.1", "root", "", "site1" , "3306");
+} else {
+	$dbLink = mysqli_connect("127.0.0.1", "site1", "sbs123414", "site1" , "3307");
+}
 
 function App__actorisLogined() {
 	return isset($_SESSION['loginedMember']);
